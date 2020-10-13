@@ -8,6 +8,10 @@ app.get("/", function (req, res) {
 
 io.on("connection", (socket) => {
   console.log("Userconnected " + socket.id);
+
+  socket.on("new_message", (data) => {
+    console.log("Client say", data);
+  });
 });
 
 http.listen(3000, () => {
