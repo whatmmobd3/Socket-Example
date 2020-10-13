@@ -1,13 +1,15 @@
-var express = require("express");
-var app = express();
-var port = 3000;
-
+var app = require("express")();
 var http = require("http").createServer(app);
+var io = require("socket.io")(http);
 
-app.get("/", (req, res) => {
-  res.send("First");
+app.get("/", function (req, res) {
+  res.sendFile(__dirname + "/index.html");
 });
 
-http.listen(port, function () {
-  console.log("Listening on port " + port);
+io.on("connection", (socket) => {
+  console.log("Userconnected " + socket.id);
+});
+
+http.listen(3000, () => {
+  console.log("listening on *:3000");
 });
