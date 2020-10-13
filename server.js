@@ -7,11 +7,12 @@ app.get("/", function (req, res) {
 });
 
 io.on("connection", (socket) => {
-  console.log("Userconnected " + socket.id);
+  console.log("User connected " + socket.id)
 
-  socket.on("new_message", (data) => {
-    console.log("Client say", data);
-  });
+  socket.on("new_message",function(data){
+      console.log("Client says",data);
+
+  })
 });
 
 http.listen(3000, () => {

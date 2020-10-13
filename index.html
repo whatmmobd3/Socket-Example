@@ -1,7 +1,8 @@
 <script src="/socket.io/socket.io.js"></script>
+
 <script>
   var server = "http://localhost:3000";
   var io = io(server);
 
-  io.emit("new_message","I am socket IO")
+  io.emit("new_message", "Hello server");
 </script>
